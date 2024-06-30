@@ -1,0 +1,128 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+   integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+   crossorigin=""/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=EB+Garamond&family=Nanum+Gothic+Coding&family=Playfair+Display&display=swap" rel="stylesheet">
+<link href="https://db.onlinewebfonts.com/c/6dd2f2510b4a00a5461b2455928209c2?family=Brandon+Grot+W01+Light" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="keywords" content="Featherston, Florist, Flowers, Wairarapa, Bouquet, Flora, Foraged, Wellington, Bunch, Floral, Top, Best, Botanic, Sustainable, Natural, Botanicical, Wedding, Prizegiving, Anniversary, Valentines, Wild">
+      <meta name="description" content="Forgaed Flora, Featherston New Zealand. Sustainably grown, seasonal flowers to the local community.">
+      <title>Foraged Flora</title>
+      <link rel="icon" href="logo.png">
+      <link rel="stylesheet" href="styles.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+   </head>
+   <body>
+      <div>
+      <div class="container">
+         <div class="nav">
+            <img src="logo.webp">
+            <ul>
+               <li><a class="active" href="#home">Home</a></li>
+               <li><a href="#ourStory">Our Story</a></li>
+               <li><a href="#portfolio">Portfolio</a></li>
+               <li><a href="#locations">Locations</a></li>
+               <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-icon">
+               <i class="fa fa-bars"></i>
+            </div>
+         </div>
+         <div class="home">
+            <h1>Foraged <br>Flora</h1>
+            <br>
+            <div id="sloganDiv">
+               <h2>​Bringing natures beauty to your doorstep with wild bunch designs</h2>
+            </div>
+            <a class="welcome-button" href="#portfolio">View Portfolio</a>
+         </div>
+         <div class="ourStory" id="ourStory">
+            <h1>Our Story</h1>
+            <hr>
+            <p id="ourStory">Foraged Flora is a small cutting garden in the South Wairarapa, north east of the small township of
+               Featherston. <br><br>
+               The philosophy of the business is to provide affordable, sustainably grown , seasonal flowers to the local
+               community.<br><br>
+               All flowers and foliage grown on our property are organically grown and we work with other local flower
+               farmers to bring you flowers throughout the year.<br><br>
+               Our posies and bunches are available for sale at Adamsons Service Station in Featherston. If you are
+               looking for special occasion or memorial flowers please email.</p>
+         </div>
+         <div class="portfolio" id="portfolio">
+            <h1>Portfolio</h1>
+            <hr>
+            <div class="slideshow-container">
+               <div class="mySlides">
+                  <img src="1.jpg" alt="Landscape 1">
+               </div>
+               <div class="mySlides">
+                  <img src="2.jpg" alt="Portrait 1">
+               </div>
+               <div class="mySlides">
+                  <img src="3.jpg" alt="Portrait 1">
+               </div>
+               <div class="mySlides">
+                  <img src="4.jpg" alt="Portrait 1">
+               </div>
+               <div class="mySlides">
+                  <img src="5.jpg" alt="Portrait 1">
+               </div>
+               <button class="prev" onclick="plusSlides(-1)">❮</button>
+               <button class="next" onclick="plusSlides(1)">❯</button>
+            </div>
+            <div class="thumbnail-container">
+               <img class="thumbnail selected" src="1.jpg" onclick="currentSlide(1)" alt="Thumbnail 1">
+               <img class="thumbnail" src="2.jpg" onclick="currentSlide(2)" alt="Thumbnail 2">
+               <img class="thumbnail" src="3.jpg" onclick="currentSlide(3)" alt="Thumbnail 3">
+               <img class="thumbnail" src="4.jpg" onclick="currentSlide(4)" alt="Thumbnail 4">
+               <img class="thumbnail" src="5.jpg" onclick="currentSlide(5)" alt="Thumbnail 5">
+            </div>
+         </div>
+         <div class="locations" id="locations">
+            <h1>Locations</h1>
+            <hr>
+            <div id="map" style="height:50vh"></div>
+         </div>
+         <div class="contact" id="contact">
+            <h1>Contact</h1>
+            <hr>
+            <div class="contact-section">
+               <div class="contact-item">
+                  <i class="fas fa-envelope"></i>
+                  <div class="contact-text">
+                     <p><a href="mailto:wildforagedflora@gmail.com">wildforagedflora@gmail.com</a></p>
+                  </div>
+               </div>
+               <div class="contact-item">
+                  <i class="fas fa-phone"></i>
+                  <div class="contact-text">
+                     <p><a href="tel:+64272847745">(+64) 027 284 7745</a></p>
+                  </div>
+               </div>
+               <div class="contact-item">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <div class="contact-text">
+                     <p><a target="_blank" href="http://maps.google.com/?q=Featherston 5710, New Zealand">Featherston 5710, New Zealand</a></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+         crossorigin=""></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+      <script src="script.js"></script>
+   </body>
+</html>
