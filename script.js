@@ -28,85 +28,109 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // Portfolio gallery 
-const images = [
-   { src: "1.png", alt: "Flowers" },
-   { src: "2.png", alt: "Flowers" },
-   { src: "3.png", alt: "Flowers" },
-   { src: "4.png", alt: "Flowers" },
-   { src: "5.png", alt: "Flowers" },
-   { src: "6.png", alt: "Flowers" },
-   { src: "7.png", alt: "Flowers" },
-   { src: "8.png", alt: "Flowers" },
-   { src: "9.png", alt: "Flowers" },
-   { src: "10.png", alt: "Flowers" },
-   { src: "11.png", alt: "Flowers" },
-   { src: "12.png", alt: "Flowers" },
-   { src: "13.png", alt: "Flowers" },
-   { src: "14.png", alt: "Flowers" },
-   { src: "15.png", alt: "Flowers" },
-   { src: "16.png", alt: "Flowers" },
- ];
+const images = [ 
+    { src: "1.png", alt: "Flowers" },
+    { src: "2.png", alt: "Flowers" },
+    { src: "3.png", alt: "Flowers" },
+    { src: "4.png", alt: "Flowers" },
+    { src: "5.png", alt: "Flowers" },
+    { src: "6.png", alt: "Flowers" },
+    { src: "7.png", alt: "Flowers" },
+    { src: "8.png", alt: "Flowers" },
+    { src: "9.png", alt: "Flowers" },
+    { src: "10.png", alt: "Flowers" },
+    { src: "11.png", alt: "Flowers" },
+    { src: "12.png", alt: "Flowers" },
+    { src: "13.png", alt: "Flowers" },
+    { src: "14.png", alt: "Flowers" },
+    { src: "15.png", alt: "Flowers" },
+    { src: "16.png", alt: "Flowers" },
+  ];
 
- let slideIndex = 1;
+  let slideIndex = 1;
 
- const slideshowContainer = document.getElementById("slideshow-container");
- const thumbnailContainer = document.getElementById("thumbnail-container");
-
- function initSlides() {
-   images.forEach((image, i) => {
-     const slide = document.createElement("div");
-     slide.className = "mySlides";
-     slide.innerHTML = `<img src="images/${image.src}" alt="${image.alt}">`;
-     slide.style.display = "none";
-     slideshowContainer.appendChild(slide);
-   });
-
-   showSlides(slideIndex);
- }
-
- function plusSlides(n) {
-   showSlides(slideIndex += n);
- }
-
- function currentSlide(n) {
-   showSlides(slideIndex = n);
- }
-
- function showSlides(n) {
-   const slides = document.getElementsByClassName("mySlides");
-   const total = slides.length;
-
-   if (n > total) slideIndex = 1;
-   if (n < 1) slideIndex = total;
-
-   for (let i = 0; i < total; i++) {
-     slides[i].style.display = "none";
-   }
-
-   slides[slideIndex - 1].style.display = "block";
-   updateThumbnails();
- }
-
- function updateThumbnails() {
-   const total = images.length;
-   let start = slideIndex - 3;
-   if (start < 0) start = 0;
-   if (start > total - 5) start = total - 5;
-   if (total <= 5) start = 0;
-
-   thumbnailContainer.innerHTML = "";
-
-   for (let i = start; i < start + 5 && i < total; i++) {
-     const thumb = document.createElement("img");
-     thumb.src = "images/" + images[i].src;
-     thumb.alt = images[i].alt;
-     thumb.className = "thumbnail" + (i + 1 === slideIndex ? " selected" : "");
-     thumb.onclick = () => currentSlide(i + 1);
-     thumbnailContainer.appendChild(thumb);
-   }
- }
-
- document.addEventListener("DOMContentLoaded", initSlides);
+  const slideshowContainer = document.getElementById("slideshow-container");
+  const thumbnailContainer = document.getElementById("thumbnail-container");
+  
+  function initSlides() {
+    images.forEach((image, i) => {
+      const slide = document.createElement("div");
+      slide.className = "mySlides";
+      slide.innerHTML = `<img src="images/${image.src}" alt="${image.alt}" loading="lazy">`;
+      slide.style.display = "none";
+      slideshowContainer.appendChild(slide);
+    });
+  
+    showSlides(slideIndex);
+  }
+  
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+  
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+  
+  function showSlides(n) {
+    const slides = document.getElementsByClassName("mySlides");
+    const total = slides.length;
+  
+    if (n > total) slideIndex = 1;
+    if (n < 1) slideIndex = total;
+  
+    for (let i = 0; i < total; i++) {
+      slides[i].style.display = "none";
+    }
+  
+    slides[slideIndex - 1].style.display = "block";
+    updateThumbnails();
+  }
+  
+  function updateThumbnails() {
+    const total = images.length;
+    let start = slideIndex - 3;
+    if (start < 0) start = 0;
+    if (start > total - 5) start = total - 5;
+    if (total <= 5) start = 0;
+  
+    thumbnailContainer.innerHTML = "";
+  
+    for (let i = start; i < start + 5 && i < total; i++) {
+      const thumb = document.createElement("img");
+      thumb.className = "thumbnail" + (i + 1 === slideIndex ? " selected" : "");
+      thumb.alt = images[i].alt;
+      thumb.loading = "lazy";  // Enable native lazy loading
+  
+      // Initially set a placeholder image
+      thumb.src = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zY3JlZW5zL3hzbC1wYXRoIj4KPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHN0eWxlPSJmaWxsOiMwMDAwMDA7Ii8+Cjwvc3ZnPg==";  // 1x1 transparent placeholder
+  
+      // Set the actual image URL as a data-src attribute
+      thumb.setAttribute('data-src', "images/" + images[i].src);
+  
+      thumb.onclick = () => currentSlide(i + 1);
+  
+      thumbnailContainer.appendChild(thumb);
+  
+      // Use IntersectionObserver to load the image when it's in the viewport
+      const observer = new IntersectionObserver((entries, observerInstance) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Replace the placeholder with the actual image when it's about to come into view
+            thumb.src = thumb.getAttribute('data-src');
+            observerInstance.unobserve(entry.target); // Stop observing once the image is loaded
+          }
+        });
+      });
+  
+      // Start observing the thumbnail image
+      observer.observe(thumb);
+    }
+  }
+  
+  document.addEventListener("DOMContentLoaded", initSlides);
+  
+  
 
 // Open street maps 
 var map = L.map('map').setView([-41.065581481196446, 175.471647627618], 9.5);
