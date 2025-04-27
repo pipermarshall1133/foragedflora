@@ -28,41 +28,85 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // Portfolio gallery 
-let slideIndex = 1;
-showSlides(slideIndex);
+const images = [
+   { src: "1.png", alt: "Flowers" },
+   { src: "2.png", alt: "Flowers" },
+   { src: "3.png", alt: "Flowers" },
+   { src: "4.png", alt: "Flowers" },
+   { src: "5.png", alt: "Flowers" },
+   { src: "6.png", alt: "Flowers" },
+   { src: "7.png", alt: "Flowers" },
+   { src: "8.png", alt: "Flowers" },
+   { src: "9.png", alt: "Flowers" },
+   { src: "10.png", alt: "Flowers" },
+   { src: "11.png", alt: "Flowers" },
+   { src: "12.png", alt: "Flowers" },
+   { src: "13.png", alt: "Flowers" },
+   { src: "14.png", alt: "Flowers" },
+   { src: "15.png", alt: "Flowers" },
+   { src: "16.png", alt: "Flowers" },
+ ];
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+ let slideIndex = 1;
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+ const slideshowContainer = document.getElementById("slideshow-container");
+ const thumbnailContainer = document.getElementById("thumbnail-container");
 
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let thumbnails = document.getElementsByClassName("thumbnail");
+ function initSlides() {
+   images.forEach((image, i) => {
+     const slide = document.createElement("div");
+     slide.className = "mySlides";
+     slide.innerHTML = `<img src="images/${image.src}" alt="${image.alt}">`;
+     slide.style.display = "none";
+     slideshowContainer.appendChild(slide);
+   });
 
-  if (n > slides.length) {
-     slideIndex = 1;
-  }
+   showSlides(slideIndex);
+ }
 
-  if (n < 1) {
-     slideIndex = slides.length;
-  }
+ function plusSlides(n) {
+   showSlides(slideIndex += n);
+ }
 
-  for (i = 0; i < slides.length; i++) {
+ function currentSlide(n) {
+   showSlides(slideIndex = n);
+ }
+
+ function showSlides(n) {
+   const slides = document.getElementsByClassName("mySlides");
+   const total = slides.length;
+
+   if (n > total) slideIndex = 1;
+   if (n < 1) slideIndex = total;
+
+   for (let i = 0; i < total; i++) {
      slides[i].style.display = "none";
-  }
+   }
 
-  for (i = 0; i < thumbnails.length; i++) {
-     thumbnails[i].classList.remove("selected");
-  }
+   slides[slideIndex - 1].style.display = "block";
+   updateThumbnails();
+ }
 
-  slides[slideIndex - 1].style.display = "block";
-  thumbnails[slideIndex - 1].classList.add("selected");
-}
+ function updateThumbnails() {
+   const total = images.length;
+   let start = slideIndex - 3;
+   if (start < 0) start = 0;
+   if (start > total - 5) start = total - 5;
+   if (total <= 5) start = 0;
+
+   thumbnailContainer.innerHTML = "";
+
+   for (let i = start; i < start + 5 && i < total; i++) {
+     const thumb = document.createElement("img");
+     thumb.src = "images/" + images[i].src;
+     thumb.alt = images[i].alt;
+     thumb.className = "thumbnail" + (i + 1 === slideIndex ? " selected" : "");
+     thumb.onclick = () => currentSlide(i + 1);
+     thumbnailContainer.appendChild(thumb);
+   }
+ }
+
+ document.addEventListener("DOMContentLoaded", initSlides);
 
 // Open street maps 
 var map = L.map('map').setView([-41.065581481196446, 175.471647627618], 9.5);
@@ -74,18 +118,32 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 let locations = [
    {
      "id": 1,
-     "lat": -41.065581481196446,
-     "long": 175.471647627618,
+     "lat": -41.07107179012294,
+     "long": 175.47033903995413,
      "title": "Pinehaven Orchards",
-     "address": "2471 State Highway 2, Greytown 5794"
+     "address": "Pinehaven Orchards, Greytown 5794"
   },
   {
      "id": 2,
-     "lat": -41.09028329524014,
-     "long": 175.369897014067,
+     "lat": -41.11645653629864,
+     "long": 175.3227930101438,
      "title": "Adamsons Service Station",
      "address": "32 Fitzherbert Street, Featherston 5710" 
-  }
+  },
+  {
+     "id": 3,
+     "lat": -41.08687220142622,
+     "long": 175.45271025333255,
+     "title": "Challenge Greytown",
+     "address": "Challenge Greytown, Greytown 5712" 
+  },
+  {
+      "id": 4,
+      "lat": -41.21867913895586,
+      "long": 175.45878960631535,
+      "title": "P&K Four Square Martinborough",
+      "address": "P%26K+Four+Square+Martinborough" 
+   }
 ]
 
 locations.forEach(element => {

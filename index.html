@@ -13,7 +13,7 @@
       <meta name="keywords" content="Featherston, Florist, Flowers, Wairarapa, Bouquet, Flora, Foraged, Wellington, Bunch, Floral, Top, Best, Botanic, Sustainable, Natural, Botanicical, Wedding, Prizegiving, Anniversary, Valentines, Wild">
       <meta name="description" content="Forgaed Flora, Featherston New Zealand. Sustainably grown, seasonal flowers to the local community.">
       <title>Foraged Flora</title>
-      <link rel="icon" href="logo.png">
+      <link rel="icon" href="images/logo.png">
       <link rel="stylesheet" href="styles.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
    </head>
@@ -21,7 +21,7 @@
       <div>
       <div class="container">
          <div class="nav">
-            <img src="logo.webp">
+            <img src="images/logo.webp">
             <ul>
                <li><a class="active" href="#home">Home</a></li>
                <li><a href="#ourStory">Our Story</a></li>
@@ -50,39 +50,18 @@
                community.<br><br>
                All flowers and foliage grown on our property are organically grown and we work with other local flower
                farmers to bring you flowers throughout the year.<br><br>
-               Our posies and bunches are available for sale at Adamsons Service Station in Featherston. If you are
+               Our posies and bunches are available for sale across the South Wairarapa. If you are
                looking for special occasion or memorial flowers please email.</p>
          </div>
          <div class="portfolio" id="portfolio">
             <h1>Portfolio</h1>
             <hr>
-            <div class="slideshow-container">
-               <div class="mySlides">
-                  <img src="1.jpg" alt="Landscape 1">
-               </div>
-               <div class="mySlides">
-                  <img src="2.jpg" alt="Portrait 1">
-               </div>
-               <div class="mySlides">
-                  <img src="3.jpg" alt="Portrait 1">
-               </div>
-               <div class="mySlides">
-                  <img src="4.jpg" alt="Portrait 1">
-               </div>
-               <div class="mySlides">
-                  <img src="5.jpg" alt="Portrait 1">
-               </div>
-               <button class="prev" onclick="plusSlides(-1)">❮</button>
-               <button class="next" onclick="plusSlides(1)">❯</button>
+            <div class="slideshow-container" id="slideshow-container">
+              <button class="prev" onclick="plusSlides(-1)">❮</button>
+              <button class="next" onclick="plusSlides(1)">❯</button>
             </div>
-            <div class="thumbnail-container">
-               <img class="thumbnail selected" src="1.jpg" onclick="currentSlide(1)" alt="Thumbnail 1">
-               <img class="thumbnail" src="2.jpg" onclick="currentSlide(2)" alt="Thumbnail 2">
-               <img class="thumbnail" src="3.jpg" onclick="currentSlide(3)" alt="Thumbnail 3">
-               <img class="thumbnail" src="4.jpg" onclick="currentSlide(4)" alt="Thumbnail 4">
-               <img class="thumbnail" src="5.jpg" onclick="currentSlide(5)" alt="Thumbnail 5">
-            </div>
-         </div>
+            <div class="thumbnail-container" id="thumbnail-container"></div>
+          </div>          
          <div class="locations" id="locations">
             <h1>Locations</h1>
             <hr>
@@ -95,19 +74,19 @@
                <div class="contact-item">
                   <i class="fas fa-envelope"></i>
                   <div class="contact-text">
-                     <p><a href="mailto:wildforagedflora@gmail.com">wildforagedflora@gmail.com</a></p>
+                     <a href="mailto:wildforagedflora@gmail.com">wildforagedflora@gmail.com</a>
                   </div>
                </div>
                <div class="contact-item">
                   <i class="fas fa-phone"></i>
                   <div class="contact-text">
-                     <p><a href="tel:+64272847745">(+64) 027 284 7745</a></p>
+                     <a href="tel:+64272847745">(+64) 027 284 7745</a>
                   </div>
                </div>
                <div class="contact-item">
                   <i class="fas fa-map-marker-alt"></i>
                   <div class="contact-text">
-                     <p><a target="_blank" href="http://maps.google.com/?q=Featherston 5710, New Zealand">Featherston 5710, New Zealand</a></p>
+                     <a target="_blank" href="http://maps.google.com/?q=Featherston 5710, New Zealand">Featherston 5710, New Zealand</a>
                   </div>
                </div>
             </div>
